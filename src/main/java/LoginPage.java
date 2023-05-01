@@ -3,13 +3,19 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage {
-    WebDriver driver;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-    public LoginPage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+public class LoginPage extends BasePage {
+    public LoginPage(WebDriver driver){
+        super(driver);
     }
+
+   // WebDriver driver;
+
+  //  public LoginPage(WebDriver driver) {
+    //        this.driver = driver;
+    //        PageFactory.initElements(driver, this);
+    //    }
 
     @FindBy(id = "user-name")
     private WebElement usernameInputField; // я в него записываю адрес ссылку где находиться елементик по Id
@@ -21,14 +27,39 @@ public class LoginPage {
     @FindBy(id = "login-button")
     private WebElement loginButton;
 
-    public void enterValueToUserName(String userNameValue) {
-        usernameInputField.sendKeys(userNameValue);
+    @FindBy(tagName = "h3")
+    private WebElement errorMessage;
+
+    public void enterValueToUserName(User user) {
+
+        usernameInputField.sendKeys(user.getUserName());
     }
-    public void enterValueToPassword(String passwordValue){ // пишу метод с помощьюкоторого я смогу наполнить поле ввода конкретным значением
-        passwordInputField.sendKeys(passwordValue);
+    public void enterValueToPassword(User user){
+
+        passwordInputField.sendKeys(user.getPassword());
     }
     public void enterLoginButton(){
+
         loginButton.click();
+    }
+    public void errorMessageAppearsTrue(String expectedText){
+      assertEquals (expectedText, errorMessage.getText());
+
+    }
+    public String getErrorMessageText(){
+
+        return errorMessage.getText();
+    }
+
+    public void successLogin(User user){
+        usernameInputField.sendKeys(user.getUserName());
+        passwordInputField.sendKeys(user.getPassword());
+        loginButton.click();
+    }
+
+    public boolean loginButtonIsDisplayed() {
+
+        return loginButton.isDisplayed();
     }
 }
 
