@@ -32,7 +32,7 @@ public class LoginPage extends BasePage {
 
     public void enterValueToUserName(User user) {
 
-        usernameInputField.sendKeys(user.getUserName());
+        usernameInputField.sendKeys(user.getUserName()); // usernameInputField. -- переменная в которую записан путь  sendKeys - метод что б задать значение в поле
     }
     public void enterValueToPassword(User user){
 
@@ -43,21 +43,21 @@ public class LoginPage extends BasePage {
         loginButton.click();
     }
     public void errorMessageAppearsTrue(String expectedText){
-      assertEquals (expectedText, errorMessage.getText());
+      assertEquals (expectedText, errorMessage.getText());     // ошибка случее неверного логина
 
     }
-    public String getErrorMessageText(){
+    public String getErrorMessageText(){  // ошибка случее неверного логина
 
         return errorMessage.getText();
     }
 
-    public void successLogin(User user){
-        usernameInputField.sendKeys(user.getUserName());
-        passwordInputField.sendKeys(user.getPassword());
+    public void successLogin(User user){                  //(User user) данные описаны в BaseTest --> обьяснение в explenation
+        usernameInputField.sendKeys(user.getUserName()); // user.getUserName -- забери значение у User user и подставь в get.UserName
+        passwordInputField.sendKeys(user.getPassword()); // usernameInputField. по этому адресу находиться поле для заполнения
         loginButton.click();
     }
 
-    public boolean loginButtonIsDisplayed() {
+    public boolean loginButtonIsDisplayed() {   // метод написаный для LogOutTest
 
         return loginButton.isDisplayed();
     }

@@ -11,3 +11,5 @@ public class User {
     private String password;
 
 }
+
+// здесь я описал поля для метода в LoginPage которые я могу заполнять любыми значениями с помощью lombok

@@ -1,8 +1,6 @@
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
-import org.openqa.selenium.WebDriver;
 
-import static java.lang.Thread.sleep;
 import static org.junit.Assert.assertTrue;
 
 public class LogOutTest extends BaseTest {
