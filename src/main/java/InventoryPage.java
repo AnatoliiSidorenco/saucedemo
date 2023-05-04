@@ -29,6 +29,18 @@ public class InventoryPage extends BasePage{  // наследует BasePage г�
     @FindBy(id = "react-burger-menu-btn")
     private WebElement burgerMenuBtn;
 
+    @FindBy(id = "add-to-cart-sauce-labs-backpack")
+    private WebElement backpackAddToCart;
+
+    @FindBy(id = "add-to-cart-sauce-labs-fleece-jacket")
+    private WebElement jacket;
+
+    @FindBy(id = "add-to-cart-sauce-labs-bolt-t-shirt")
+    private WebElement tShirt;
+
+    @FindBy(className = "shopping_cart_link")
+    private WebElement cartIcon;
+
 // todo ---------------- Д\з проверка что страница с фотографиями отображаеться -----------------
     public boolean inventoryPageAppears() {
         return inventoryList.isDisplayed();
@@ -139,6 +151,27 @@ public class InventoryPage extends BasePage{  // наследует BasePage г�
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(burgerMenuBtn));
         burgerMenuBtn.click();
+    }
+    public void clickBackpackAddToCart(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(backpackAddToCart));
+        backpackAddToCart.click();
+    }
+    public void clickJacketToCart(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(jacket));
+        jacket.click();
+    }
+    public void clickTshirtAddToCart(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(tShirt));
+        tShirt.click();
+    }
+
+    public void clickOnCartItem(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(cartIcon));
+        cartIcon.click();
     }
 }
 
